@@ -1,13 +1,16 @@
-import React from 'react'
+import CurrencyList from 'components/containers/CurrencyList'
 import MainTemplate from 'templates/MainTemplate'
-import ExchangeRepository from 'repositories/exchange/ExchangeRepository'
+import React from 'react'
+import rootStore from 'stores/rootStore'
+import { Provider } from 'react-redux'
 
 const App = () => {
-  ExchangeRepository.getLatest().then(res => console.log(res))
   return (
-    <MainTemplate>
-      <h2>Test</h2>
-    </MainTemplate>
+    <Provider store={rootStore}>
+      <MainTemplate>
+        <CurrencyList />
+      </MainTemplate>
+    </Provider>
   )
 }
 
