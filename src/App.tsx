@@ -1,4 +1,4 @@
-import CurrencyList from 'components/containers/CurrencyList'
+import Main from 'components/organisms/Main'
 import MainTemplate from 'templates/MainTemplate'
 import React from 'react'
 import rootStore from 'stores/rootStore'
@@ -8,7 +8,7 @@ const App = () => {
   return (
     <Provider store={rootStore}>
       <MainTemplate>
-        <CurrencyList />
+        <Main />
       </MainTemplate>
     </Provider>
   )
