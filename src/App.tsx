@@ -1,6 +1,6 @@
 import 'antd/dist/antd.css'
 import Main from 'components/organisms/Main'
-import MainTemplate from 'templates/MainTemplate'
+import MainTemplate from 'components/templates/MainTemplate'
 import React from 'react'
 import rootStore from 'stores/rootStore'
 import { Provider } from 'react-redux'
