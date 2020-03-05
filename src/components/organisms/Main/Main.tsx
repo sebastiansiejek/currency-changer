@@ -1,11 +1,11 @@
 import CurrencyList from 'components/containers/CurrencyList'
 import ExchangeRepository from 'repositories/exchange/ExchangeRepository'
 import React from 'react'
-import store from 'stores/rootStore'
+import exchangeSlice from 'store/slices/exchangeSlice'
+import store from 'store/store'
 import { InputNumber } from 'antd'
-import { setLatestRates } from 'actions/actions'
 
-ExchangeRepository.getLatest().then(res => store.dispatch(setLatestRates({ payload: res })))
+ExchangeRepository.getLatest().then(res => store.dispatch(exchangeSlice.actions.setLatestRates(res)))
 
 const Main = () => (
   <main>
