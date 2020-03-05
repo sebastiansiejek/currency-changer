@@ -1,1 +1,0 @@
-export const SET_LATEST_RATES = 'SET_LATEST_RATES'
