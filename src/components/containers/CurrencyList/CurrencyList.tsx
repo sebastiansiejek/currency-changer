@@ -3,8 +3,9 @@ import { Row, Col } from 'antd'
 import { connect } from 'react-redux'
 import { ExchangeReducerType } from 'store/types/reducerTypes'
 import { Spin } from 'antd'
+import { ExchangeStoreType } from 'store/types/storeTypes'
 
-const CurrencyList = ({ isFetchLatestRates }: { isFetchLatestRates: boolean }) => {
+const CurrencyList = ({ isFetchLatestRates }: ExchangeStoreType) => {
   if (isFetchLatestRates) {
     return (
       <Row>

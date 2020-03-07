@@ -1,8 +1,8 @@
 export type ExchangeStoreType = {
-  latestRates: {
+  latestRates?: {
     base: string
     date: string
     rates: Object
   }
-  isFetchLatestRates: boolean
+  isFetchLatestRates?: boolean
 }
