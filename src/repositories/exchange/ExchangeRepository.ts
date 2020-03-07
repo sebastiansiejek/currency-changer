@@ -11,7 +11,7 @@ export default class ExchangeRepository {
 
     return await fetch(this.api_url + `/latest${queryParams}`).then(res => {
       store.dispatch(exchangeSlice.actions.fetchLatestRates({ payload: false }))
-      res.json()
+      return res.json()
     })
   }
 }

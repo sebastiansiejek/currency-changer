@@ -5,4 +5,5 @@ export type ExchangeStoreType = {
     rates: Object
   }
   isFetchLatestRates?: boolean
+  currencyValue?: number
 }

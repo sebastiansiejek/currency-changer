@@ -8,10 +8,29 @@ export default createSlice({
       date: '',
       rates: {}
     },
-    isFetchLatestRates: false
+    baseRates: {
+      base: '',
+      date: '',
+      rates: {}
+    },
+    isFetchLatestRates: false,
+    currencyValue: 0
   },
   reducers: {
-    setLatestRates: (state, { payload }) => ({ ...state, latestRates: payload }),
-    fetchLatestRates: (state, { payload }) => ({ ...state, isFetchLatestRates: payload })
+    setLatestRates: (state, { payload }) => ({ ...state, latestRates: payload, baseRates: payload }),
+    fetchLatestRates: (state, { payload }) => ({ ...state, isFetchLatestRates: payload }),
+    setCurrencyValue: (state, { payload }) => {
+      const { rates } = state.latestRates
+      const r: { [index: string]: any } = { ...state.baseRates.rates }
+
+      if (payload)
+        for (let key in rates) {
+          if (rates.hasOwnProperty(key)) {
+            r[key] *= payload
+          }
+        }
+
+      return { ...state, currencyValue: payload, latestRates: { ...state.latestRates, rates: r } }
+    }
   }
 })
