@@ -1,20 +1,25 @@
-import ExchangeRepository from 'repositories/exchange/ExchangeRepository'
 import React from 'react'
-import { bindActionCreators, Dispatch } from 'redux'
+import { Row, Col } from 'antd'
 import { connect } from 'react-redux'
-import { setLatestRates } from 'actions/actions'
+import { ExchangeReducerType } from 'store/types/reducerTypes'
+import { Spin } from 'antd'
+import { ExchangeStoreType } from 'store/types/storeTypes'
 
-const mapDispatchToProps = (dispatch: Dispatch) =>
-  bindActionCreators(
-    {
-      setLatestRates: res => setLatestRates(res)
-    },
-    dispatch
-  )
-
-const CurrencyList = ({ setLatestRates }: ReturnType<typeof mapDispatchToProps>) => {
-  ExchangeRepository.getLatest().then(res => setLatestRates({ payload: res }))
-  return <h2>Lista</h2>
+const CurrencyList = ({ isFetchLatestRates }: ExchangeStoreType) => {
+  if (isFetchLatestRates) {
+    return (
+      <Row>
+        <Col>
+          <h2>test</h2>
+        </Col>
+      </Row>
+    )
+  }
+  return <Spin />
 }
 
-export default connect(null, mapDispatchToProps)(CurrencyList)
+const mapStateToProps = ({ exchange }: ExchangeReducerType) => ({
+  isFetchLatestRates: exchange.isFetchLatestRates
+})
+
+export default connect(mapStateToProps)(CurrencyList)
