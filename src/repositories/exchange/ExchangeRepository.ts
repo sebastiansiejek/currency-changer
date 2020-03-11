@@ -12,9 +12,10 @@ export default class ExchangeRepository {
     return await fetch(this.api_url + `/latest${queryParams}`)
       .then(res => res.json())
       .then(res => {
-        store.dispatch(exchangeSlice.actions.setCurrency({ payload: params?.base || 'EUR' }))
         store.dispatch(exchangeSlice.actions.fetchLatestRates({ payload: false }))
+        store.dispatch(exchangeSlice.actions.setCurrency({ payload: params?.base || 'EUR' }))
         store.dispatch(exchangeSlice.actions.setLatestRates(res))
+        store.dispatch(exchangeSlice.actions.setCurrencyValue(store.getState().exchange.currencyValue))
       })
   }
 }
