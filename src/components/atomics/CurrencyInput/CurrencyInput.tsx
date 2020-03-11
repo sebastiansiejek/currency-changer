@@ -8,6 +8,7 @@ export default () => {
     <InputNumber
       min={0}
       step={1}
+      defaultValue={1}
       placeholder="Value"
       onChange={value => {
         store.dispatch(exchangeSlice.actions.setCurrencyValue(value))
