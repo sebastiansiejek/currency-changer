@@ -10,10 +10,9 @@ import { sortCurrencies } from 'utils/utils'
 
 const CurrencyList = ({ isFetchLatestRates, latestRates }: ExchangeStoreType) => {
   if (isFetchLatestRates && latestRates?.base) {
-    const data: { key: string; currency: string; value: string }[] = []
-
     const { rates } = latestRates
 
+    const data: { key: string; currency: string; value: string }[] = []
     sortCurrencies(rates).forEach((rateKey: string) => {
       if (rates[rateKey]) {
         data.push({
