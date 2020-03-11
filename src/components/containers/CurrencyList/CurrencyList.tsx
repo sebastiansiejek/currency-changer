@@ -1,9 +1,9 @@
 import React from 'react'
+import { ExchangeReducerType } from 'store/types/reducerTypes'
+import { ExchangeStoreType } from 'store/types/storeTypes'
+import { Spin } from 'antd'
 import { Table } from 'antd'
 import { connect } from 'react-redux'
-import { ExchangeReducerType } from 'store/types/reducerTypes'
-import { Spin } from 'antd'
-import { ExchangeStoreType } from 'store/types/storeTypes'
 import { currencyFormat } from 'utils/utils'
 
 const CurrencyList = ({ isFetchLatestRates, latestRates }: ExchangeStoreType) => {
@@ -26,12 +26,14 @@ const CurrencyList = ({ isFetchLatestRates, latestRates }: ExchangeStoreType) =>
           {
             title: 'Currency',
             key: 'currency',
-            dataIndex: 'currency'
+            dataIndex: 'currency',
+            width: '50%'
           },
           {
             title: 'Value',
             key: 'value',
-            dataIndex: 'value'
+            dataIndex: 'value',
+            width: '50%'
           }
         ]}
       ></Table>
