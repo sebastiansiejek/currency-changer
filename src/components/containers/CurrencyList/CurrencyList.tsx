@@ -1,3 +1,4 @@
+import 'styles/currency-table.css'
 import React from 'react'
 import { ExchangeReducerType } from 'store/types/reducerTypes'
 import { ExchangeStoreType } from 'store/types/storeTypes'
@@ -5,21 +6,27 @@ import { Spin } from 'antd'
 import { Table } from 'antd'
 import { connect } from 'react-redux'
 import { currencyFormat } from 'utils/utils'
+import { sortCurrencies } from 'utils/utils'
 
 const CurrencyList = ({ isFetchLatestRates, latestRates }: ExchangeStoreType) => {
   if (isFetchLatestRates && latestRates?.base) {
     const data: { key: string; currency: string; value: string }[] = []
 
-    for (let [key, value] of Object.entries(latestRates.rates)) {
-      data.push({
-        key,
-        currency: key,
-        value: currencyFormat(value, key)
-      })
-    }
+    const { rates } = latestRates
+
+    sortCurrencies(rates).forEach((rateKey: string) => {
+      if (rates[rateKey]) {
+        data.push({
+          key: rateKey,
+          currency: rateKey,
+          value: currencyFormat(rates[rateKey], rateKey)
+        })
+      }
+    })
 
     return (
       <Table
+        className="currency-table"
         pagination={false}
         dataSource={data}
         columns={[
@@ -36,7 +43,7 @@ const CurrencyList = ({ isFetchLatestRates, latestRates }: ExchangeStoreType) =>
             width: '50%'
           }
         ]}
-      ></Table>
+      />
     )
   }
   return <Spin />

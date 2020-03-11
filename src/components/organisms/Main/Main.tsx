@@ -8,9 +8,13 @@ ExchangeRepository.getLatest()
 
 const Main = () => (
   <main>
-    <CurrencyInput />
-    <CurrencySelect />
-    <CurrencyList />
+    <div style={{ padding: '4vw', height: `calc(100vh - 4vw)`, overflowY: 'auto' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
+        <CurrencyInput />
+        <CurrencySelect />
+      </div>
+      <CurrencyList />
+    </div>
   </main>
 )
 
