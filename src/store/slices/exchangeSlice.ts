@@ -14,7 +14,8 @@ export default createSlice({
       rates: {}
     },
     isFetchLatestRates: false,
-    currencyValue: 0
+    currencyValue: 0,
+    currency: ''
   },
   reducers: {
     setLatestRates: (state, { payload }) => ({ ...state, latestRates: payload, baseRates: payload }),
@@ -31,6 +32,7 @@ export default createSlice({
         }
 
       return { ...state, currencyValue: payload, latestRates: { ...state.latestRates, rates: r } }
-    }
+    },
+    setCurrency: (state, { payload }) => ({ ...state, currency: payload })
   }
 })
