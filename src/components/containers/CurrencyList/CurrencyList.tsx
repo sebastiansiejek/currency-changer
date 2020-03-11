@@ -36,7 +36,7 @@ const CurrencyList = ({ isFetchLatestRates, latestRates }: ExchangeStoreType) =>
             width: '50%'
           }
         ]}
-      ></Table>
+      />
     )
   }
   return <Spin />
