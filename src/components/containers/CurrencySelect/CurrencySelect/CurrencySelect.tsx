@@ -1,9 +1,10 @@
 import React from 'react'
+import ExchangeRepository from 'repositories/exchange/ExchangeRepository'
 import { ExchangeReducerType } from 'store/types/reducerTypes'
 import { Select } from 'antd'
 import { connect } from 'react-redux'
 import { ExchangeStoreType } from 'store/types/storeTypes'
-import ExchangeRepository from 'repositories/exchange/ExchangeRepository'
+import { sortCurrencies } from 'utils/utils'
 
 const { Option } = Select
 
@@ -15,8 +16,8 @@ const CurrencySelect = ({ latestRates }: ExchangeStoreType & any) => {
         style={{ width: 80 }}
         onChange={(value: string) => ExchangeRepository.getLatest({ base: value })}
       >
-        {Object.keys(latestRates?.rates).map(currency => (
-          <Option value={currency} key="currency">
+        {[...sortCurrencies(latestRates?.rates)].map(currency => (
+          <Option value={currency} key={currency}>
             {currency}
           </Option>
         ))}
