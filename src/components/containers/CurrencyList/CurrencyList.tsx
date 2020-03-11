@@ -14,7 +14,7 @@ const CurrencyList = ({ isFetchLatestRates, latestRates }: ExchangeStoreType) =>
 
     const { rates } = latestRates
 
-    sortCurrencies(rates).forEach((rateKey: any) => {
+    sortCurrencies(rates).forEach((rateKey: string) => {
       if (rates[rateKey]) {
         data.push({
           key: rateKey,
